@@ -15,6 +15,8 @@ waiAria: https://www.w3.org/WAI/ARIA/apg/patterns/link/
 
 The Link component is built on top of the [Typography](/material-ui/api/typography/) component, meaning that you can use its props.
 
+Linkコンポーネントは[Typography](/material-ui/api/typography/)コンポーネントの上に構築されており、そのプロップを使用することができます。
+
 {{"demo": "Links.js"}}
 
 However, the Link component has some different default props than the Typography component:

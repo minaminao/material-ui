@@ -14,6 +14,8 @@ githubLabel: 'component: CssBaseline'
 
 You might be familiar with [normalize.css](https://github.com/necolas/normalize.css), a collection of HTML element and attribute style-normalizations.
 
+HTMLの要素と属性のスタイル正規化のコレクションである[normalize.css](https://github.com/necolas/normalize.css)をご存知かもしれません。
+
 ```jsx
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -33,6 +35,9 @@ export default function MyApp() {
 However, you might be progressively migrating a website to Material UI, using a global reset might not be an option.
 It's possible to apply the baseline only to the children by using the `ScopedCssBaseline` component.
 
+しかし、ウェブサイトを徐々にマテリアルUIに移行している場合、グローバルリセットを使用することはオプションではないかもしれません。
+`ScopedCssBaseline`コンポーネントを使用することで、子要素にのみベースラインを適用することができます。
+
 ```jsx
 import * as React from 'react';
 import ScopedCssBaseline from '@mui/material/ScopedCssBaseline';
@@ -49,6 +54,8 @@ export default function MyApp() {
 ```
 
 ⚠️ Make sure you import `ScopedCssBaseline` first to avoid box-sizing conflicts as in the above example.
+
+⚠️ 上記の例のように、ボックスサイズの衝突を避けるために、最初に`ScopedCssBaseline`をインポートしてください。
 
 ## Approach
 

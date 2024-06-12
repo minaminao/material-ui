@@ -19,6 +19,8 @@ waiAria: https://www.w3.org/WAI/ARIA/apg/patterns/button/
 
 The Button component replaces the native HTML `<button>` element, and offers expanded options for styling and accessibility.
 
+Buttonコンポーネントは、ネイティブHTMLの `<button>` 要素を置き換え、スタイリングとアクセシビリティのための拡張オプションを提供します。
+
 {{"demo": "UnstyledButtonIntroduction", "defaultCodeOpen": false, "bg": "gradient"}}
 
 ## Component
@@ -29,8 +31,13 @@ import { Button } from '@mui/base/Button';
 
 The Button behaves similar to the native HTML `<button>`, so it wraps around the text that will be displayed on its surface.
 
+ボタンはネイティブHTMLの `<button>` に似た振る舞いをするので、その表面に表示されるテキストを包み込みます。
+
 The following demo shows how to create and style two basic buttons.
 Notice that the second button cannot be clicked due to the `disabled` prop:
+
+次のデモでは、2つの基本的なボタンの作成方法とスタイルを示します。
+2番目のボタンは `disabled` プロパによってクリックできないことに注意してください:
 
 {{"demo": "UnstyledButtonsSimple.js"}}
 
@@ -70,13 +77,19 @@ Similarly, `<Button slots={{ root: "span" }} type="reset">` will not reset its p
 
 ### Usage with TypeScript
 
-In TypeScript, you can specify the custom component type used in the `slots.root` as a generic parameter of the unstyled component. This way, you can safely provide the custom root's props directly on the component:
+In TypeScript, you can specify the custom component type used in the `slots.root` as a generic parameter of the unstyled component.
+This way, you can safely provide the custom root's props directly on the component:
+
+TypeScriptでは、スタイルなしコンポーネントのジェネリックパラメータとして、`slots.root`で使用するカスタムコンポーネントの型を指定できます。
+こうすることで、カスタムルートのpropsを安全にコンポーネントに直接指定できます:
 
 ```tsx
 <Button<typeof CustomComponent> slots={{ root: CustomComponent }} customProp />
 ```
 
 The same applies for props specific to custom primitive elements:
+
+カスタムプリミティブ要素に固有の小道具についても同様です:
 
 ```tsx
 <Button<'img'> slots={{ root: 'img' }} src="button.png" />
@@ -90,6 +103,9 @@ import { useButton } from '@mui/base/useButton';
 
 The `useButton` hook lets you apply the functionality of a Button to a fully custom component.
 It returns props to be placed on the custom component, along with fields representing the component's internal state.
+
+`useButton` フックを使うと、ボタンの機能を完全にカスタム化されたコンポーネントに適用できます。
+このフックは、コンポーネントの内部ステートを表すフィールドと一緒に、カスタムコンポーネントに配置するプロップを返します。
 
 Hooks _do not_ support [slot props](#custom-structure), but they do support [customization props](#customization).
 
@@ -123,11 +139,16 @@ For the sake of simplicity, demos, and code snippets primarily feature component
 The Button accepts a wide range of custom elements beyond HTML elements.
 You can even use SVGs, as shown in the demo below:
 
+ButtonはHTML要素だけでなく、さまざまなカスタム要素を使用できます。
+下のデモのように、SVGを使うこともできます:
+
 {{"demo": "UnstyledButtonCustom.js", "defaultCodeOpen": false}}
 
 ### Using with links
 
 The following demo illustrates how to use the Button as a link, whether using the Base UI Button itself for the `href`, or with the [Next.js Link component](https://nextjs.org/docs/pages/api-reference/components/link):
+
+次のデモは、Base UI Buttonそのものを`href`に使用するか、[Next.js Link component](https://nextjs.org/docs/pages/api-reference/components/link)を使用して、Buttonをリンクとして使用する方法を示しています:
 
 {{"demo": "UnstyledLinkButton.js", "defaultCodeOpen": true}}
 

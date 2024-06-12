@@ -11,6 +11,8 @@
 
 - [Joy UI](https://mui.com/joy-ui/getting-started/) is a library of beautifully designed React UI components built to spark joy.
 
+- [Joy UI](https://mui.com/joy-ui/getting-started/)は、喜びを呼び起こすために作られた、美しくデザインされたReact UIコンポーネントのライブラリです。
+
 <div align="center">
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/mui/material-ui/blob/HEAD/LICENSE)

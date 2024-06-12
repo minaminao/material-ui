@@ -18,7 +18,11 @@ githubLabel: 'component: FormControl'
 
 Form Control is a utility that wraps an input component with other associated components in order to make the state of the input available to those components.
 
+フォームコントロールは、入力コンポーネントを他の関連コンポーネントでラップし、それらのコンポーネントで入力のステートを利用できるようにするユーティリティです。
+
 For instance, you may want to show an additional element asking the user to enter a value if the input is empty, or display a warning icon if the entered value is incorrect.
+
+例えば、入力が空の場合にユーザーに値の入力を求める追加要素を表示したり、入力された値が正しくない場合に警告アイコンを表示したりできます。
 
 ## Component
 
@@ -29,6 +33,9 @@ import { FormControl } from '@mui/base/FormControl';
 Form Control wraps around the elements of a form that need access to the state of an `<input>`.
 For instance, if the form's **Submit** button needs to change states after the user enters information, then the component will be structured like this:
 
+フォームコントロールは `<input>` のステートへのアクセスが必要なフォームの要素をラップします。
+例えば、フォームの **Submit** ボタンがユーザが情報を入力した後にステートを変更する必要がある場合、コンポーネントはこのような構造になります:
+
 ```jsx
 <FormControl>
   <input>
@@ -38,6 +45,9 @@ For instance, if the form's **Submit** button needs to change states after the u
 
 The following demo shows how to create and style a form that uses Form Control to wrap the elements of the form.
 Note that it also uses the `useFormControlContext` hook in order to pass props to the custom Input—see the [Hook](#hook) section below for more details.
+
+次のデモでは、フォームコントロールを使ってフォームの要素をラップするフォームの作成方法とスタイルを示しています。
+また、カスタムInputにpropsを渡すために `useFormControlContext` フックを使用していることに注意してください。詳細は下記の [Hook](#hook) セクションを参照してください。
 
 {{"demo": "BasicFormControl"}}
 
