@@ -9,6 +9,11 @@ This is especially useful for one-off components with custom designs.
 
 The following code samples illustrate the difference between styled-components and `sx`:
 
+MUI System の `sx` プロップを使用すると、不必要なスタイル付きコンポーネントのコードを書く必要がなくなり、代わりにコンポーネント自体の中で直接スタイルを定義することができます。
+これは、カスタムデザインの一点もののコンポーネントの場合に特に便利です。
+
+以下のコードサンプルは、styled-component と `sx` の違いを示しています:
+
 {{"demo": "Why.js", "bg": true, "defaultCodeOpen": false}}
 
 1. Using the styled-components API:
@@ -115,10 +120,20 @@ It also simplifies the process of defining responsive values by referring to the
 
 Visit [the `sx` prop page](/system/getting-started/the-sx-prop/) for complete details.
 
+MUI System のコアユーティリティは `sx` プロップで、React 要素に正しいデザイントークンを直接適用するための迅速かつ効率的な方法を提供します。
+
+このプロップは、使用されるCSSプロパティに応じて、テーマから直接値をマッピングするCSSのスーパーセット（つまり、カスタムのものに加えて、すべてのCSSプロパティとセレクタを含む）を提供します。
+また、テーマで定義されたブレークポイントを参照することで、レスポンシブな値を定義するプロセスを簡略化します。
+
+詳細については、[`sx` prop page](/system/getting-started/the-sx-prop/) を参照してください。
+
 ### Responsive demo
 
 The following demo shows how to use the `sx` prop to apply custom styles and create a complex UI component using the `Box` wrapper alone.
 Resize the window to see the responsive breakpoints:
+
+次のデモでは、`sx` プロップを使用してカスタムスタイルを適用し、`Box` ラッパーだけを使用して複雑な UI コンポーネントを作成する方法を示します。
+レスポンシブブレークポイントを見るにはウィンドウのサイズを変更してください:
 
 {{"demo": "Demo.js", "bg": true, "defaultCodeOpen": true}}
 
@@ -126,13 +141,21 @@ Resize the window to see the responsive breakpoints:
 
 The `sx` prop is best suited for applying one-off styles to custom components.
 
+`sx` プロパティはカスタムコンポーネントに単発のスタイルを適用するのに適しています。
+
 This is in contrast to the styled-components API, which is ideal for building components that need to support a wide variety of contexts.
 These components are used in many different parts of the application and support different combinations of props.
+
+これは styled-components API とは対照的で、さまざまなコンテキストをサポートする必要があるコンポーネントを構築するのに適しています。
+これらのコンポーネントはアプリケーションのさまざまな部分で使用され、さまざまなプロップの組み合わせをサポートします。
 
 ### Performance tradeoffs
 
 MUI System relies on CSS-in-JS.
 It works with both Emotion and styled-components.
+
+MUI System は CSS-in-JS に依存しています。
+Emotion と styled-components の両方で動作します。
 
 #### Pros
 
@@ -144,6 +167,15 @@ It works with both Emotion and styled-components.
   You pay the cost of [@emotion/react](https://bundlephobia.com/package/@emotion/react) and [@mui/system](https://bundlephobia.com/package/@mui/system).
   The total size is ~15 kB gzipped.
   But if you are already using an MUI Core component library like Material UI, then it comes with no extra overhead.
+
+- `sx` プロパティは CSS のスーパーセットを使用しているので、CSS をすでに知っている人であれば、構文はすぐに馴染むでしょう。
+  また、（オプションの）省略記法の定義も用意されているので、前もって少し勉強しておくと時間の節約になります。
+  これらは左側のナビゲーションにある **スタイルユーティリティ** セクションに記載されています。
+- 📦 システムの自動パージにより、ページで使用されるCSSのみがクライアントに送信されます。
+  最初のバンドルサイズのコストは固定で、CSS プロパティを追加しても大きくなることはありません。
+  あなたは、[@emotion/react](https://bundlephobia.com/package/@emotion/react) と [@mui/system](https://bundlephobia.com/package/@mui/system) のコストを支払います。
+  合計のサイズは、gzip圧縮で15キロバイトです。
+  しかし、すでにMaterial UIのようなMUI Coreのコンポーネントライブラリを使用している場合は、余分なオーバーヘッドはありません。
 
 #### Cons
 
@@ -160,17 +192,29 @@ Runtime performance takes a hit.
 
 Visit the [benchmark folder](https://github.com/mui/material-ui/tree/next/benchmark/browser) for a reproduction of the metrics above.
 
+[benchmark folder](https://github.com/mui/material-ui/tree/next/benchmark/browser)で上記のメトリクスを再現できます。
+
 We believe that for most use cases it's fast enough, but there are simple workarounds when performance becomes critical.
 For instance, when rendering a list with many items, you can use a CSS child selector to have a single "style injection" point (using d. for the wrapper and a. for each item).
+
+ほとんどの使用例では十分高速ですが、パフォーマンスが重要になる場合は簡単な回避策があります。
+たとえば、大量の項目があるリストをレンダリングする場合、CSSの子セレクタを使用して、単一の「スタイルインジェクション」ポイントを持つことができます（ラッパーにはd.を使用し、各項目にはa.を使用します）。
 
 ### API tradeoff
 
 MUI System's unifying `sx` prop helps to maintain the separation of concerns between CSS utilities and component business logic.
 
+MUI Systemの統一的な `sx` プロパティは、CSSユーティリティとコンポーネントのビジネスロジックの間の懸念事項の分離を維持するのに役立ちます。
+
 For instance, a `color` prop on a button impacts multiple states (hover, focus, etc.), and is distinct from the CSS `color` property.
+
+例えば、ボタンの `color` プロパティは複数のステート（ホバー、フォーカスなど）に影響し、CSS の `color` プロパティとは区別されます。
 
 Only the `Box`, `Stack`, `Typography`, and `Grid` components accept MUI System properties as props for this reason.
 These components are designed to solve CSS problems—they are CSS component utilities.
+
+このような理由から、`Box`、`Stack`、`Typography`、`Grid` コンポーネントのみが MUI System プロパティをプロップとして受け付けます。
+これらのコンポーネントはCSSの問題を解決するために設計されており、CSSコンポーネントのユーティリティです。
 
 ## Where to use MUI System
 
@@ -231,6 +275,9 @@ These shorthands are optional—they're great for saving time, but not necessary
 The `sx` prop supports CSS syntax including child and pseudo-selectors, media queries, raw CSS values, and more.
 Here are a few examples of how you can implement these CSS features:
 
+`sx` プロップは子セレクタや擬似セレクタ、メディアクエリ、生の CSS 値などを含む CSS 構文をサポートしています。
+これらの CSS 機能を実装する例をいくつか示します:
+
 - Using pseudo-selectors:
 
   ```jsx
@@ -272,13 +319,22 @@ Here are a few examples of how you can implement these CSS features:
 The `sx` prop simplifies the process of defining and implementing responsive breakpoints.
 You can define a set of breakpoints in two different ways: as an object, or as an array.
 
+`sx` プロップは、レスポンシブブレークポイントの定義と実装を簡単にします。
+2つの異なる方法でブレークポイントのセットを定義できます: オブジェクトとして、または配列として。
+
 #### Breakpoints as an object
 
 The first option for breakpoints is to define them as an object, using the breakpoint values as keys.
 Note that each property for a given breakpoint also applies to all larger breakpoints in the set.
 For example, `width: { lg: 100 }` is equivalent to `theme.breakpoints.up('lg')`.
 
+ブレークポイントの最初のオプションは、ブレークポイントの値をキーとして、オブジェクトとして定義することです。
+与えられたブレークポイントの各プロパティは、セット内のすべての大きなブレークポイントにも適用されることに注意してください。
+例えば、`width: { lg： 100 }` は `theme.breakpoints.up('lg')` と同じです。
+
 The following demo shows how to define a set of breakpoints using the object syntax:
+
+次のデモでは、オブジェクト構文を使用してブレークポイントのセットを定義する方法を示します:
 
 {{"demo": "BreakpointsAsObject.js"}}
 
@@ -293,6 +349,10 @@ The shorthand syntax is `@{breakpoint}/{container}`:
 - **breakpoint**: a number for `px` unit or a breakpoint key (e.g. `sm`, `md`, `lg`, `xl` for default breakpoints) or a valid CSS value (e.g. `40em`).
 - **container** (optional): the name of the [containment context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#naming_containment_contexts).
 
+
+- **breakpoint**: `px` 単位の数値、またはブレークポイントキー (デフォルトのブレークポイントは `sm`、`md`、`lg`、`xl` など)、または有効な CSS 値 (`40em` など)。
+- **container** (オプション): [コンテキストの名前](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries#naming_containment_contexts)。
+
 {{"demo": "ContainerQueries.js"}}
 
 #### Breakpoints as an array
@@ -300,12 +360,19 @@ The shorthand syntax is `@{breakpoint}/{container}`:
 The second option is to define your breakpoints as an array, from smallest to largest.
 Here's what that looks like:
 
+2つ目の方法は、ブレークポイントを小さいものから大きいものへと配列で定義する方法です。
+以下のようになります:
+
 {{"demo": "BreakpointsAsArray.js"}}
 
 :::success
 This option should only be considered when the theme has a limited number of breakpoints, for example 3.
 
+このオプションは、テーマのブレークポイントの数が限られている場合にのみ考慮すべきです。
+
 We recommend using the object API instead if you need to define more than a few breakpoints.
+
+数個以上のブレークポイントを定義する必要がある場合は、代わりにオブジェクト API を使用することをお勧めします。
 :::
 
 You can skip breakpoints with the `null` value:
@@ -354,6 +421,8 @@ export default function CustomBreakpoints() {
 ```
 
 If you are using TypeScript, you will also need to use [module augmentation](/material-ui/guides/typescript/#customization-of-theme) for the theme to accept the above values.
+
+TypeScriptを使用している場合は、[module augmentation](/material-ui/guides/typescript/#customization-of-theme)を使用して、テーマが上記の値を受け入れるようにする必要もあります。
 
 ```ts
 declare module '@mui/material/styles' {

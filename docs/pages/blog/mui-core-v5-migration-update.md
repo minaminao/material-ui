@@ -47,7 +47,12 @@ Keep in mind that the new style engine is 100% [incrementally adoptable](/materi
 Material UI v5 introduces the `sx` prop, which opens up a whole new realm of possibility for applying custom styles.
 Now you can apply style rules to individual components without needing to involve the `styled()` API, which would be overkill when dealing with one-off styles.
 
+Material UI v5 では `sx` プロップが導入され、カスタムスタイルを適用するための全く新しい可能性が広がりました。
+これにより、`styled()` APIを使用しなくても、個々のコンポーネントにスタイルルールを適用できるようになりました。
+
 The `sx` prop lets you work with a superset of CSS, making it very intuitive to pick up and start using if you're already comfortable with CSS.
+
+`sx`プロップはCSSのスーパーセットを扱うことができるので、CSSに慣れている人であれば直感的に使い始めることができます。
 
 ```tsx
 import * as React from 'react';
